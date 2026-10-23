@@ -1,6 +1,6 @@
 import { buildApp } from './app.js';
 
-const app = buildApp();
+const app = buildApp({ allowedOrigin: process.env.ALLOWED_ORIGIN });
 const port = Number(process.env.PORT ?? 3333);
 if (!Number.isInteger(port) || port < 1 || port > 65535) throw new RangeError('Invalid PORT');
 

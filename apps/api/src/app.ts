@@ -1,3 +1,4 @@
+import cors from '@fastify/cors';
 import Fastify from 'fastify';
 
 import type { MarketDataSource } from './application/secondary-market/ports/market-data-source.js';
@@ -9,6 +10,7 @@ import { makeGetScpiYield } from './main/factories/make-get-scpi-yield.js';
 import { makeSimulateScpiYield } from './main/factories/make-simulate-scpi-yield.js';
 
 export interface AppOptions {
+  allowedOrigin?: string;
   marketDataSources?: ReadonlyMap<string, MarketDataSource>;
   logger?: boolean;
   yieldData?: ScpiYieldData;
@@ -18,6 +20,14 @@ export interface AppOptions {
 
 export function buildApp(options: AppOptions = {}) {
   const app = Fastify({ logger: options.logger ?? true });
+  if (options.allowedOrigin) {
+    app.register(cors, {
+      origin: options.allowedOrigin,
+      methods: ['GET', 'POST'],
+      allowedHeaders: ['Content-Type'],
+      credentials: false,
+    });
+  }
   app.get('/api/health', async () => ({ status: 'ok', service: 'louveinvest-api' }));
   const getScpiMarket = makeGetScpiMarket(options.marketDataSources);
   const getScpiYield = makeGetScpiYield(getScpiMarket, options.yieldData, options.now);
