@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['**/node_modules/**', '**/dist/**', '**/coverage/**', 'reviews/**'],
+    ignores: ['**/node_modules/**', '**/dist/**', '**/coverage/**', '**/.vercel/**', 'reviews/**'],
   },
   {
     files: ['**/*.{ts,tsx,js,mjs}'],
