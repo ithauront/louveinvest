@@ -12,7 +12,12 @@ export function PageLayout({ children }: { children: ReactNode }) {
       <header className="site-header">
         <div className="header-inner">
           <a href="#main" className="brand" aria-label="Louve Invest — accueil">
-            <img src="/brand/louve-invest.svg" alt="Louve Invest" width="217" height="36" />
+            <img
+              src={`${import.meta.env.BASE_URL}brand/louve-invest.svg`}
+              alt="Louve Invest"
+              width="217"
+              height="36"
+            />
           </a>
           <span className="header-context">Marché secondaire des SCPI</span>
           <a href="#purchase-email" className="header-action">

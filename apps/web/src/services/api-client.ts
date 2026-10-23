@@ -20,7 +20,7 @@ function errorCode(body: unknown): string | undefined {
     return error.code;
 }
 
-/** Same-origin requests use the Vite /api proxy in development. No personal data is sent. */
+/** Empty origin uses the development proxy; production can target the deployed API. */
 async function requestApiJson<T>(
   path: string,
   parse: (value: unknown) => T,
@@ -37,7 +37,8 @@ async function requestApiJson<T>(
     controller.abort();
   }, 20_000);
   try {
-    const response = await fetch(path, {
+    const apiOrigin = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '');
+    const response = await fetch(`${apiOrigin}${path}`, {
       signal: controller.signal,
       headers: {
         Accept: 'application/json',
