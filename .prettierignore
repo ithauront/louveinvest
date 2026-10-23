@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+reviews/
+package-lock.json
+# Preserve captured source fixtures.
+apps/api/tests/fixtures/
