@@ -28,7 +28,7 @@ Après build : `npm run start -w @louveinvest/api` et `npm run preview -w @louve
 
 ## Déploiement
 
-Frontend sur [GitHub Pages](https://ithauront.github.io/louveinvest/), API sur Vercel Hobby. Sur une pull request, GitHub Actions vérifie lint, formatage, types, tests et build. Sur `main`, ces vérifications précèdent le déploiement de l’API puis du frontend.
+Frontend sur [GitHub Pages](https://ithauront.github.io/louveinvest/), API sur [Vercel Hobby](https://louveinvest-api.vercel.app/api/health). Sur une pull request, GitHub Actions vérifie lint, formatage, types, tests et build. Sur `main`, ces vérifications précèdent le déploiement de l’API puis du frontend.
 
 Variables du dépôt : `VITE_API_BASE_URL` (origine HTTPS de l’API, sans `/api`), `VERCEL_ORG_ID` et `VERCEL_PROJECT_ID`. Le jeton Vercel reste dans le secret Actions `VERCEL_TOKEN`. `VITE_BASE_PATH` est calculé depuis le nom du dépôt. Sur Vercel, `ALLOWED_ORIGIN=https://ithauront.github.io` autorise le frontend ; aucun credential navigateur n’est utilisé. Voir aussi [la configuration frontend](apps/web/.env.example).
 
