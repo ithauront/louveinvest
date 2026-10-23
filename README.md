@@ -63,5 +63,3 @@ Interface inspirée du [site Louve Invest](https://www.louveinvest.com/), dont p
 
 Temps non chronométré : réalisation en plusieurs séances, sans durée rétrospective inventée.
 L’IA a assisté analyse, code, tests et présentation. Exemple de contrôle : retenir **4,56 € brut**, pas **4,40 € distribué**, après vérification du rapport annuel ; année et source sont explicites et une autre année n’est jamais réutilisée silencieusement.
-
-Avec une journée supplémentaire : renforcer les fixtures de scraping et l’alerte de changement HTML. Pour la restitution : adaptation à d’autres sociétés de gestion, réutilisation du domaine et mapping vers un mandat PDF.
