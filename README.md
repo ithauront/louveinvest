@@ -22,9 +22,17 @@ npm test
 npm run build
 ```
 
-**460 tests** : 267 backend et 193 frontend, dont un parcours HTML capturé → API → React → export. Tests hors ligne, complétés par une vérification navigateur de l’API réelle, du clavier, des contrastes et du mobile.
+**467 tests** : 271 backend et 196 frontend, dont un parcours HTML capturé → API → React → export. Tests hors ligne, complétés par une vérification navigateur de l’API réelle, du clavier, des contrastes et du mobile.
 
-Après build : `npm run start -w @louveinvest/api` et `npm run preview -w @louveinvest/web`. Le preview/déploiement exige un reverse proxy `/api` ; le proxy Vite fourni sert au développement. Scripts dev en syntaxe POSIX, avec polling des fichiers.
+Après build : `npm run start -w @louveinvest/api` et `npm run preview -w @louveinvest/web`. Le preview exige un reverse proxy `/api` ou `VITE_API_BASE_URL` défini au build. Scripts dev en syntaxe POSIX, avec polling des fichiers.
+
+## Déploiement
+
+Frontend sur [GitHub Pages](https://ithauront.github.io/louveinvest/), API sur Vercel Hobby. Sur une pull request, GitHub Actions vérifie lint, formatage, types, tests et build. Sur `main`, ces vérifications précèdent le déploiement de l’API puis du frontend.
+
+Variables du dépôt : `VITE_API_BASE_URL` (origine HTTPS de l’API, sans `/api`), `VERCEL_ORG_ID` et `VERCEL_PROJECT_ID`. Le jeton Vercel reste dans le secret Actions `VERCEL_TOKEN`. `VITE_BASE_PATH` est calculé depuis le nom du dépôt. Sur Vercel, `ALLOWED_ORIGIN=https://ithauront.github.io` autorise le frontend ; aucun credential navigateur n’est utilisé. Voir aussi [la configuration frontend](apps/web/.env.example).
+
+Le cache reste propre à chaque instance serverless et peut disparaître à froid. L’hébergement gratuit est soumis aux quotas du fournisseur ; aucune option payante n’est activée.
 
 ## Choix et hypothèses
 
