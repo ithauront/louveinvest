@@ -32,6 +32,8 @@ Frontend sur [GitHub Pages](https://ithauront.github.io/louveinvest/), API sur [
 
 Variables du dépôt : `VITE_API_BASE_URL` (origine HTTPS de l’API, sans `/api`), `VERCEL_ORG_ID` et `VERCEL_PROJECT_ID`. Le jeton Vercel reste dans le secret Actions `VERCEL_TOKEN`. `VITE_BASE_PATH` est calculé depuis le nom du dépôt. Sur Vercel, `ALLOWED_ORIGIN=https://ithauront.github.io` autorise le frontend ; aucun credential navigateur n’est utilisé. Voir aussi [la configuration frontend](apps/web/.env.example).
 
+L’auteur du commit doit être reconnu par le compte Vercel propriétaire : email associé ou connexion GitHub configurée.
+
 Le cache reste propre à chaque instance serverless et peut disparaître à froid. L’hébergement gratuit est soumis aux quotas du fournisseur ; aucune option payante n’est activée.
 
 ## Choix et hypothèses
